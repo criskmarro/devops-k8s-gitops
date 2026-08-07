@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: devops-k8s-gitops
+  namespace: argocd
+spec:
+  project: devops-k8s-gitops
+  source:
+    repoURL: https://github.com/criskmarro/devops-k8s-gitops
+    targetRevision: main
+    path: k8s/overlays/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true

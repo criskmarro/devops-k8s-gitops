@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: devops-k8s-gitops
+  namespace: argocd
+spec:
+  description: "DevOps K8s GitOps project"
+  sourceRepos:
+    - "https://github.com/criskmarro/devops-k8s-gitops"
+  destinations:
+    - namespace: app
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: ""
+      kind: Namespace
