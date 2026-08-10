@@ -18,7 +18,7 @@ resource "aws_iam_role_policy_attachment" "eks_cluster_policy" {
 resource "aws_eks_cluster" "main" {
   name     = "${var.project_name}-${var.environment}"
   role_arn = aws_iam_role.eks_cluster.arn
-  version  = "1.30"
+  version  = "1.32"
 
   vpc_config {
     subnet_ids = var.subnet_ids
@@ -59,7 +59,7 @@ resource "aws_eks_node_group" "main" {
   node_group_name = "${var.project_name}-nodes"
   node_role_arn   = aws_iam_role.eks_nodes.arn
   subnet_ids      = var.subnet_ids
-  instance_types  = ["t3.medium"]
+  instance_types  = ["t3.small"]
 
   scaling_config {
     desired_size = 2
