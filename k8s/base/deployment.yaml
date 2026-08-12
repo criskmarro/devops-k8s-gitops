@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: api
-          image: k3d-registry.localhost:5000/devops-k8s-gitops:latest
+          image: ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/devops-k8s-gitops:latest
           ports:
             - containerPort: 8000
           envFrom:
