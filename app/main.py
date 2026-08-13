@@ -1,15 +1,15 @@
+import models
 from fastapi import FastAPI, Depends, HTTPException
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from typing import Optional
-from app.database import get_db, engine
-from app import models
+from database import get_db, engine
 
 models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="DevOps K8s GitOps API",
-    description="Cloud-native API deployed on AWS EKS with GitOps",
+    description="Cloud-native API deployed on Kubernetes with GitOps",
     version="1.0.0"
 )
 
